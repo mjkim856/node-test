@@ -101,50 +101,6 @@
                 })
             .catch(error => console.error('Error:', error));
         });
-
-        // 데이터 삭제
-        document.getElementById('btnDelete').addEventListener('click', () => {
-            const tel = document.getElementById('btnDelete').dataset.tel;
-            fetch(`http://localhost:3000/users/${tel}`, {
-                method: 'DELETE'
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message);
-                // 삭제 후 화면 갱신
-                document.getElementById('btnFetch').click();
-            })
-            .catch(error => console.error('Error:', error));
-        });
-
-            
-        // 데이터 수정
-// 데이터 수정
-    document.getElementById('updateForm').addEventListener('submit', (event) => {
-        event.preventDefault();
-        const tel = document.getElementById('updateTel').value;
-        const name = document.getElementById('updateName').value;
-
-        const data = {
-            name: name,
-            tel: tel
-        };
-
-        fetch(`http://localhost:3000/users/${tel}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-            // 수정 후 폼 숨기기
-            document.getElementById('updateForm').style.display = 'none';
-        })
-        .catch(error => console.error('Error:', error));
-    });
     </script>
 
 </body>
