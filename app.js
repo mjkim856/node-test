@@ -39,12 +39,6 @@ app.use(bodyParser.json()); // JSON 파싱 활성화
 // public 디렉토리를 정적 파일 루트 디렉토리로 설정
 app.use(express.static(path.join(__dirname, 'public')));
 
-// // 이벤트 페이지 조회
-// app.get('/', (req, res) => {
-//     // 이벤트 페이지를 여기서 렌더링하여 클라이언트에 전달하거나,
-//     // index.html과 같은 정적 파일을 보내는 것도 가능합니다.
-//     res.send('index.html');
-// });
 
 // 이벤트 신청 폼 제출 처리
 app.post('/submit-form', (req, res) => {
@@ -73,36 +67,6 @@ app.get('/users', (req, res) => {
             res.status(500).json({ message: '데이터 조회 실패' });
         } else {
             res.status(200).json(results);
-        }
-    });
-});
-
-// 데이터 삭제
-app.delete('/users/:tel', (req, res) => {
-    const tel = req.params.tel;
-    const sql = 'DELETE FROM user WHERE tel = ?';
-    connection.query(sql, [tel], (err, result) => {
-        if (err) {
-            console.error('Error deleting data from MySQL:', err);
-            res.status(500).json({ message: '데이터 삭제 실패' });
-        } else {
-            res.status(200).json({ message: '데이터 삭제 성공' });
-        }
-    });
-});
-
-// 데이터 수정
-app.put('/users/:tel', (req, res) => {
-    const tel = req.params.tel;
-    const { name } = req.body;
-    console.log(req.body);
-    const sql = 'UPDATE user SET name = ? WHERE tel = ?';
-    connection.query(sql, [name, tel], (err, result) => {
-        if (err) {
-            console.error('Error updating data in MySQL:', err);
-            res.status(500).json({ message: '데이터 수정 실패' });
-        } else {
-            res.status(200).json({ message: '데이터 수정 성공' });
         }
     });
 });
