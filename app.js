@@ -16,13 +16,6 @@ const connection = mysql.createConnection({
     database: 'event1'
 });
 
-// const connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'test1',
-//     password: 'test1',
-//     database: 'test1'
-// });
-
 // MySQL 연결
 connection.connect((err) => {
     if (err) {
