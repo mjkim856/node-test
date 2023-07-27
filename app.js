@@ -12,7 +12,7 @@ app.use(cors());
 const connection = mysql.createConnection({
     host: '',
     user: 'root',
-    password: '',
+    password: 'Alskdjp',
     database: 'event1'
 });
 
@@ -31,7 +31,6 @@ app.use(bodyParser.json()); // JSON 파싱 활성화
 
 // public 디렉토리를 정적 파일 루트 디렉토리로 설정
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 // 이벤트 신청 폼 제출 처리
 app.post('/submit-form', (req, res) => {
