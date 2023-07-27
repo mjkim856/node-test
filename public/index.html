@@ -33,20 +33,6 @@
     <!-- 데이터 조회 버튼입니다.  -->
     <button id="btnFetch">데이터 조회</button>
 
-    <!-- 데이터 삭제 버튼입니다.  -->
-    <button id="btnDelete" disabled>데이터 삭제</button>
-
-    <!-- 데이터 수정 폼 -->
-    <form id="updateForm" style="display: none;">
-        <!-- 기존 필드들 -->
-        <input type="hidden" id="updateTel">
-        <label for="updateName">수정할 이름:</label>
-        <input type="text" id="updateName" required>
-        <!-- 다른 필드들도 추가 -->
-        <button type="submit">수정</button>
-    </form>
-
-
     <script>
         const eventForm = document.getElementById("eventForm");
         eventForm.addEventListener("submit", submitForm);
@@ -55,7 +41,7 @@
             event.preventDefault();
             const formData = new FormData(event.target);
     
-            fetch('http://localhost:3000/submit-form', {
+            fetch('/submit-form', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -72,7 +58,7 @@
 
         // 데이터 조회
         document.getElementById('btnFetch').addEventListener('click', () => {
-            fetch('http://localhost:3000/users')
+            fetch('/users')
                 .then(response => response.json())
                 .then(data => {
                     console.log(data); // 서버에서 받아온 데이터 확인
